@@ -1,0 +1,142 @@
+{
+  "root": {
+    "status": "passed",
+    "response": {
+      "message": "AI Service",
+      "version": "1.0.0"
+    }
+  },
+  "health": {
+    "status": "passed",
+    "response": {
+      "status": "healthy"
+    }
+  },
+  "list_models": {
+    "status": "passed",
+    "response": {
+      "models": [
+        {
+          "name": "nomic-embed-text:latest",
+          "model": "nomic-embed-text:latest",
+          "modified_at": "2026-04-26T07:53:20.426655723Z",
+          "size": 274302450,
+          "digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "nomic-bert",
+            "families": [
+              "nomic-bert"
+            ],
+            "parameter_size": "137M",
+            "quantization_level": "F16"
+          }
+        },
+        {
+          "name": "llama3.2:latest",
+          "model": "llama3.2:latest",
+          "modified_at": "2026-04-26T07:53:14.630518226Z",
+          "size": 2019393189,
+          "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "llama",
+            "families": [
+              "llama"
+            ],
+            "parameter_size": "3.2B",
+            "quantization_level": "Q4_K_M"
+          }
+        }
+      ]
+    },
+    "model_count": 2
+  },
+  "text_generation": {
+    "status": "partial",
+    "results": [
+      {
+        "scenario": 1,
+        "status": "failed",
+        "error": "Client error '422 Unprocessable Entity' for url 'http://localhost:8005/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422"
+      },
+      {
+        "scenario": 2,
+        "status": "failed",
+        "error": "Client error '422 Unprocessable Entity' for url 'http://localhost:8005/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422"
+      },
+      {
+        "scenario": 3,
+        "status": "failed",
+        "error": "Client error '422 Unprocessable Entity' for url 'http://localhost:8005/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422"
+      }
+    ],
+    "passed": 0,
+    "total": 3
+  },
+  "embedding_generation": {
+    "status": "passed",
+    "results": [
+      {
+        "text_length": 30,
+        "embedding_size": 768,
+        "status": "passed"
+      },
+      {
+        "text_length": 41,
+        "embedding_size": 768,
+        "status": "passed"
+      },
+      {
+        "text_length": 10,
+        "embedding_size": 768,
+        "status": "passed"
+      },
+      {
+        "text_length": 225,
+        "embedding_size": 768,
+        "status": "passed"
+      }
+    ],
+    "passed": 4,
+    "total": 4
+  },
+  "performance": {
+    "status": "failed",
+    "error": "Client error '422 Unprocessable Entity' for url 'http://localhost:8005/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422"
+  },
+  "error_handling": {
+    "status": "completed",
+    "passed": 2,
+    "total": 4,
+    "results": [
+      {
+        "test": "Empty generation request",
+        "status": "passed"
+      },
+      {
+        "test": "Missing required fields",
+        "status": "passed"
+      },
+      {
+        "test": "Invalid model for embedding",
+        "status": "failed"
+      },
+      {
+        "test": "Empty text for embedding",
+        "status": "failed"
+      }
+    ]
+  },
+  "summary": {
+    "core_passed": 4,
+    "core_total": 6,
+    "error_passed": 2,
+    "error_total": 4,
+    "overall_passed": 6,
+    "overall_total": 10,
+    "success_rate": 60.0
+  }
+}

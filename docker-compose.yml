@@ -1,0 +1,438 @@
+version: '3.8'
+
+services:
+  # ============================================
+  # Infrastructure Services
+  # ============================================
+  
+  postgres:
+    image: postgres:15-alpine
+    container_name: chatbot_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-chatbot_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-chatbot_pass_2024}
+      POSTGRES_DB: chatbot_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init_db.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-chatbot_user} -d ${POSTGRES_DB:-chatbot_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - chatbot_network
+  
+  postgres_userdata:
+    image: postgres:15-alpine
+    container_name: chatbot_postgres_userdata
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-chatbot_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-chatbot_pass_2024}
+      POSTGRES_DB: userdata_db 
+    volumes:
+      - postgres_userdata:/var/lib/postgresql/data
+      - ./scripts/init_convdb.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    ports:
+      - "5444:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-chatbot_user} -d userdata_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - chatbot_network
+
+  ollama:
+    image: ollama/ollama:0.17.4
+    container_name: chatbot_ollama
+    pull_policy: always 
+    tty: true
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+      - ./entrypoint.sh:/entrypoint.sh
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:11434/api/tags >/dev/null 2>&1 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
+    # command: serve  
+      # pull nomic-embed-text /
+      # wait
+    networks:
+      - chatbot_network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: chatbot_redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - chatbot_network
+
+  rabbitmq:
+    image: rabbitmq:3.12-management-alpine
+    container_name: chatbot_rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-admin}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS:-admin_pass}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    ports:
+      - "5672:5672"   # AMQP
+      - "15672:15672" # Management UI
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - chatbot_network
+
+  chroma:
+    image: chromadb/chroma:1.5.1
+    container_name: chatbot_chroma
+    volumes:
+      - chroma_data:/chroma/chroma
+    ports:
+      - "8100:8000"
+    environment:
+      IS_PERSISTENT: "TRUE"
+      ANONYMIZED_TELEMETRY: "FALSE"
+    # entrypoint: ["/bin/sh" ]
+    networks:
+      - chatbot_network
+
+# chroma_init:
+#   image: python:3.11-slim
+#   container_name: chatbot_chroma_init
+#   depends_on:
+#     - chroma
+#     - ollama  # если нужно
+#   networks:
+#     - chatbot_network
+#   volumes:
+#     - ./scripts:/scripts:ro
+#     - chroma_data:/chroma/chroma
+#   environment:
+#     CHROMA_URL: "http://chroma:8000"
+#     OLLAMA_HOST: "http://ollama:11434"
+#     EMBEDDING_MODEL: "nomic-embed-text"
+#     BUSINESS_COLLECTION: "knowledge_base"
+#     USER_COLLECTION: "user_memory"
+#   command: >
+#     sh -lc "
+#     pip install --no-cache-dir chromadb httpx &&
+#     /scripts/chroma_init.sh
+#     "
+#   restart: "no"
+  # ============================================
+  # API Gateway
+  # ============================================
+  
+
+  api_gateway:
+    build:
+      context: .
+      dockerfile: services/api_gateway/Dockerfile
+    container_name: chatbot_api_gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - AUTH_SERVICE_URL=http://auth_service:8001
+      - BOT_SERVICE_URL=http://bot_service:8002
+      - ADMIN_SERVICE_URL=http://admin_service:8003
+      - ANALYTICS_SERVICE_URL=http://analytics_service:8004
+    depends_on:
+      auth_service:
+        condition: service_started
+      bot_service:
+        condition: service_started
+      admin_service:
+        condition: service_started
+      analytics_service:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - chatbot_network
+    restart: unless-stopped
+
+  # ============================================
+  # Core Microservices
+  # ============================================
+
+  auth_service:
+    build:
+      context: .
+      dockerfile: services/auth_service/Dockerfile
+    container_name: chatbot_auth_service
+    ports:
+      - "8001:8001"
+    environment:
+      - DATABASE_URL=postgresql://chatbot:chatbot_pass_2024@postgres:5432/chatbot_db
+      - REDIS_URL=redis://redis:6379/0
+      - JWT_SECRET=${JWT_SECRET:-your-secret-key-change-in-production}
+      - JWT_ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+      - REFRESH_TOKEN_EXPIRE_DAYS=7
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - chatbot_network
+    restart: unless-stopped
+
+  bot_service:
+    build:
+      context: .
+      dockerfile: ./services/bot_service/Dockerfile
+    container_name: chatbot_bot_service
+    ports:
+      - "8002:8002"
+    environment:
+      - DATABASE_URL=postgresql://chatbot:chatbot_pass_2024@postgres:5432/bot_db
+      - REDIS_URL=redis://redis:6379/1
+      - RABBITMQ_URL=amqp://admin:admin_pass@rabbitmq:5672/
+      - AI_SERVICE_URL=http://ai_service:8005
+      - KNOWLEDGE_SERVICE_URL=http://knowledge_service:8006
+    depends_on:
+      postgres:
+        condition: service_healthy
+      postgres_userdata:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - chatbot_network
+    restart: unless-stopped
+
+  ai_service:
+    build:
+      context: .
+      dockerfile: ./services/ai_service/Dockerfile
+    container_name: chatbot_ai_service
+    ports:
+      - "8005:8005"
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - REDIS_URL=redis://redis:6379/2
+      - DEFAULT_MODEL=llama3.2
+      - EMBEDDING_MODEL=nomic-embed-text
+      - OPENAI_API_KEY=${OPENAI_KEY}
+    depends_on:
+      - ollama
+      - redis
+    networks:
+      - chatbot_network
+    restart: unless-stopped
+
+  knowledge_service:
+    build:
+      context: .
+      dockerfile: ./services/knowledge_service/Dockerfile
+    container_name: chatbot_knowledge_service
+    ports:
+      - "8006:8006"
+    environment:
+      - DATABASE_URL=postgresql://chatbot:chatbot_pass_2024@postgres:5432/knowledge_db
+      - CHROMA_URL=http://chroma:8000
+      - OLLAMA_HOST=http://ollama:11434
+      - EMBEDDING_MODEL=nomic-embed-text
+    depends_on:
+      - postgres
+      - chroma
+      - ollama
+    networks:
+      - chatbot_network
+    restart: unless-stopped
+
+  admin_service:
+    build:
+      context: .
+      dockerfile: ./services/admin_service/Dockerfile
+    container_name: chatbot_admin_service
+    ports:
+      - "8003:8003"
+    environment:
+      - DATABASE_URL=postgresql://chatbot:chatbot_pass_2024@postgres:5432/admin_db
+      - KNOWLEDGE_SERVICE_URL=http://knowledge_service:8006
+      - REDIS_URL=redis://redis:6379/3
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - chatbot_network
+    restart: unless-stopped
+
+  analytics_service:
+    build:
+      context: .
+      dockerfile: ./services/analytics_service/Dockerfile
+    container_name: chatbot_analytics_service
+    ports:
+      - "8004:8004"
+    environment:
+      - DATABASE_URL=postgresql://chatbot:chatbot_pass_2024@postgres:5432/analytics_db
+      - REDIS_URL=redis://redis:6379/4
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - chatbot_network
+    restart: unless-stopped
+
+  # ============================================
+  # Channel Adapters
+  # ============================================
+
+  whatsapp_adapter:
+    build:
+      context: .
+      dockerfile: ./services/adapters/whatsapp/Dockerfile
+    container_name: chatbot_whatsapp_adapter
+    environment:
+      - WHATSAPP_TOKEN=${WHATSAPP_TOKEN}
+      - WHATSAPP_PHONE_NUMBER_ID=${WHATSAPP_PHONE_NUMBER_ID}
+      - SYSTEM_USER_ACCESS_TOKEN=${SYSTEM_USER_ACCESS_TOKEN}
+      # - BOT_SERVICE_URL=http://bot_service:8002
+      - API_GATEWAY_URL=http://api_gateway:8000
+      - RABBITMQ_URL=amqp://admin:admin_pass@rabbitmq:5672/
+      - POLLING_INTERVAL=3
+    depends_on:
+      - bot_service
+      - rabbitmq
+    ports:
+      - "8080:8000"
+    networks:
+      - chatbot_network
+    restart: unless-stopped
+
+  instagram_adapter:
+    build:
+      context: .
+      dockerfile: ./services/adapters/instagram/Dockerfile
+    container_name: chatbot_instagram_adapter
+    environment:
+      - INSTAGRAM_TOKEN=${INSTAGRAM_TOKEN}
+      - INSTAGRAM_PAGE_ID=${INSTAGRAM_PAGE_ID}
+      - BOT_SERVICE_URL=http://bot_service:8002
+      - RABBITMQ_URL=amqp://admin:admin_pass@rabbitmq:5672/
+      - POLLING_INTERVAL=5
+    depends_on:
+      - bot_service
+      - rabbitmq
+    networks:
+      - chatbot_network
+    restart: unless-stopped
+
+  web_adapter:
+    build:
+      context: .
+      dockerfile: ./services/adapters/web/Dockerfile
+    container_name: chatbot_web_adapter
+    ports:
+      - "8007:8007"
+    environment:
+      - BOT_SERVICE_URL=http://bot_service:8002
+      - REDIS_URL=redis://redis:6379/5
+    depends_on:
+      - bot_service
+      - redis
+    networks:
+      - chatbot_network
+    restart: unless-stopped
+
+  # ============================================
+  # Frontend Services
+  # ============================================
+
+  admin_panel:
+    build:
+      context: .
+      dockerfile: ./frontend/admin-panel/Dockerfile
+    container_name: chatbot_admin_panel
+    ports:
+      - "3000:80"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+    depends_on:
+      - api_gateway
+    networks:
+      - chatbot_network
+    restart: unless-stopped
+
+  # ============================================
+  # Monitoring (Optional)
+  # ============================================
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: chatbot_prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - chatbot_network
+    profiles:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: chatbot_grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana-dashboards:/etc/grafana/provisioning/dashboards
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+    depends_on:
+      - prometheus
+    networks:
+      - chatbot_network
+    profiles:
+      - monitoring
+
+volumes:
+  postgres_data:
+  postgres_userdata:
+  redis_data:
+  rabbitmq_data:
+  chroma_data:
+  ollama_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  chatbot_network:
+    driver: bridge

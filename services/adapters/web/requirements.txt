@@ -1,0 +1,10 @@
+# Include shared requirements
+# -r ../../shared/requirements.txt
+
+-r shared_requirements.txt
+
+# Web adapter specific dependencies
+websockets==12.0
+python-multipart==0.0.6
+# Adapter specific
+requests==2.31.0

@@ -1,0 +1,6 @@
+# Include shared requirements
+# -r ../../shared/requirements.txt
+
+-r shared_requirements.txt 
+# API Gateway specific packages
+# Add any additional packages needed for the API gateway

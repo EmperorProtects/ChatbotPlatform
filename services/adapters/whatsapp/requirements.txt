@@ -1,0 +1,7 @@
+# Include shared requirements
+# -r ../../../shared/requirements.txt
+
+-r shared_requirements.txt 
+# Adapter specific
+requests==2.31.0
+pydantic

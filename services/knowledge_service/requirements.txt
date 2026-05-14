@@ -1,0 +1,16 @@
+# Include shared requirements
+# -r ../../shared/requirements.txt
+
+-r shared_requirements.txt 
+# Vector DB
+numpy==1.26.4
+chromadb==1.5.1
+# Embeddings
+# sentence-transformers==2.3.1
+
+# Document processing
+pypdf2==3.0.1
+python-docx==1.1.0
+openpyxl==3.1.2
+fastapi_utils
+typing-inspect

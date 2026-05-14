@@ -1,0 +1,12 @@
+# Include shared requirements
+# -r ../../shared/requirements.txt
+
+-r shared_requirements.txt
+
+# Analytics specific dependencies
+redis==5.0.1
+pandas==2.1.4
+# numpy==1.25.2
+# Analytics
+pandas==2.1.4
+numpy==1.26.3

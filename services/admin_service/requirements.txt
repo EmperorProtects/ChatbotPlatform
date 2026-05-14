@@ -1,0 +1,6 @@
+# Include shared requirements
+# -r ../../shared/requirements.txt
+
+-r shared_requirements.txt 
+# Additional admin packages
+pandas==2.1.4

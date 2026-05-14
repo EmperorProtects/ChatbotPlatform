@@ -1,0 +1,20 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'api_gateway'
+    static_configs:
+      - targets: ['api_gateway:8000']
+
+  - job_name: 'bot_service'
+    static_configs:
+      - targets: ['bot_service:8002']
+
+  - job_name: 'ai_service'
+    static_configs:
+      - targets: ['ai_service:8005']

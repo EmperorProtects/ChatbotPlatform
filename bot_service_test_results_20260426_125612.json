@@ -1,0 +1,753 @@
+{
+  "root": {
+    "status": "passed",
+    "response": {
+      "message": "Bot Service",
+      "version": "1.0.0"
+    }
+  },
+  "health": {
+    "status": "passed",
+    "response": {
+      "status": "healthy",
+      "redis": "connected",
+      "services": {
+        "ai_service": "http://ai_service:8005",
+        "knowledge_service": "http://knowledge_service:8006"
+      }
+    }
+  },
+  "incoming_messages": {
+    "status": "passed",
+    "passed": 4,
+    "total": 4,
+    "avg_time": 5.62,
+    "results": [
+      {
+        "id": 1,
+        "status": "passed",
+        "time": 13.16,
+        "response_len": 491
+      },
+      {
+        "id": 2,
+        "status": "passed",
+        "time": 3.4,
+        "response_len": 170
+      },
+      {
+        "id": 3,
+        "status": "passed",
+        "time": 3.47,
+        "response_len": 270
+      },
+      {
+        "id": 4,
+        "status": "passed",
+        "time": 2.43,
+        "response_len": 90
+      }
+    ]
+  },
+  "create_conversation": {
+    "status": "passed",
+    "conversation_id": "1bf27bb4-5c62-4e32-aecb-dda978e3fd74"
+  },
+  "disable_enable": {
+    "status": "partial",
+    "results": {
+      "disable": "failed",
+      "enable": "failed"
+    }
+  },
+  "conversation_history": {
+    "status": "passed",
+    "passed": 3,
+    "total": 3,
+    "results": [
+      {
+        "user_id": 778788878,
+        "status": "passed",
+        "count": 2
+      },
+      {
+        "user_id": "test_user_002",
+        "status": "passed",
+        "count": 0
+      },
+      {
+        "user_id": "nonexistent_xyz_999",
+        "status": "passed",
+        "count": 0
+      }
+    ]
+  },
+  "get_all_conversations": {
+    "status": "passed",
+    "response": {
+      "conversations": [
+        {
+          "conversation_id": "38f57390-aa7c-44e6-b727-010861cc479c",
+          "user_id": 778788878,
+          "channel": "telegram",
+          "status": "enabled",
+          "created_at": "2026-03-12T09:09:03.835593",
+          "updated_at": "2026-04-26T07:56:02.422185",
+          "messages": [
+            {
+              "id": "40e0d6ef-7516-4823-aa25-e4b5b5fdbf32",
+              "sender_type": "bot",
+              "message": "Привет! Есть два основных электрокара Hongqi, которые чаще всего спрашивают: **EQM5** и **E‑HS9**.\n\n**Hongqi EQM5** — городской/трассовый седан, комфортный салон и современная мультимедиа. Цена **от 25 000 000 тг**, зарядка от обычной розетки примерно **8–10 часов** (быстрее — на быстрой станции).\n\n**Hongqi E‑HS9** — большой премиальный электрический SUV: просторный салон и много опций, хорошо подходит для семьи и дальних поездок.\n\nПодскажите, вам больше нужен **седан или большой SUV**?",
+              "timestamp": "2026-04-26T07:55:49.473554"
+            },
+            {
+              "id": "bc624fa5-7598-4c79-b0fe-bf55e3732f1c",
+              "sender_type": "user",
+              "message": "Привет! Расскажи о ваших электромобилях",
+              "timestamp": "2026-04-26T07:55:48.890572"
+            },
+            {
+              "id": "afd9836e-2e99-4f64-b8bb-59d55c9decf8",
+              "sender_type": "bot",
+              "message": "Мы продаём **премиальные электромобили Hongqi в Казахстане** с **официальной поддержкой и сервисом** — у нас есть **сервисная база в Алматы**, поэтому по диагностике, обслуживанию и эксплуатации вы не остаётесь один на один с машиной.\n\n### Основная модель в наличии/под заказ — **Hongqi E‑HS9**\nПремиальный электрический **SUV** для тех, кому важны комфорт, простор и статус:\n- **Очень просторный салон** (удобно для семьи, дальних поездок и формата “с водителем”)\n- **Богатые опции комфорта и безопасности** (зависят от комплектации)\n- **Экономичнее в эксплуатации**, чем сопоставимые премиальные авто с ДВС: меньше затрат на “топливо” и меньше регламентных работ\n\n### Если кажется “дорого”\nВ цене E‑HS9 вы платите за **уровень безопасности, тишину и комфорт премиум‑класса**, а также за **существенную экономию на топливе и обслуживании**. Плюс можно подобрать **подходящую комплектацию** под ваш бюджет и задачи.\n\nЕсли хотите — скажите, пожалуйста:\n1) город (Алматы/другой)  \n2) сколько мест нужно (6/7) и какой бюджет/диапазон  \n— и я подберу **комплектацию и ориентир по цене**.\n\n### Тест‑драйв\nТест‑драйв доступен **по предварительной записи**. Напишите удобный день/время и **контактный номер** — я оформлю запись.",
+              "timestamp": "2026-03-13T02:29:58.779522"
+            },
+            {
+              "id": "24ac87a9-bb85-42cf-b569-cc06025ebca8",
+              "sender_type": "user",
+              "message": "Привет! Расскажи о ваших электромобилях",
+              "timestamp": "2026-03-13T02:29:58.658236"
+            },
+            {
+              "id": "2c90c1eb-e570-47dc-939a-5c474308dd92",
+              "sender_type": "bot",
+              "message": "Мы продаём **премиальные электромобили Hongqi в Казахстане** — с **официальным сервисом и поддержкой**, включая сервисную базу в **Алматы**. Это удобно: по эксплуатации, диагностике и обслуживанию вы не остаётесь один на один с машиной.\n\n### Самая популярная модель у нас — **Hongqi E‑HS9**\nПремиальный электрический **SUV** с акцентом на комфорт и статус:\n- **Очень просторный салон** — комфортно для семьи и дальних поездок, а также если ездите с водителем.\n- **Богатое оснащение** (в зависимости от комплектации): комфортные опции, современные системы безопасности и ассистенты.\n- **Экономичнее в содержании**, чем сопоставимые премиальные авто с ДВС: меньше затрат на «топливо» и меньше регламентных работ по обслуживанию.\n\n### Если кажется “дорого”\nЭто частое ощущение при сравнении с обычными авто. В E‑HS9 цена оправдывается:\n- **безопасностью и технологиями**,  \n- **премиальным комфортом и уровнем материалов**,  \n- **экономией на топливе и обслуживании**.  \nТакже можем подобрать **вариант комплектации** под ваш бюджет и задачи.\n\nЧтобы подсказать максимально точно: вам авто больше для **города**, **трассы/дальних поездок** или **семьи**? И в каком вы городе (Алматы/Астана/другой)?",
+              "timestamp": "2026-03-12T10:29:05.298417"
+            },
+            {
+              "id": "3735100d-31c9-4ec7-ac98-ec5bb3c4a68a",
+              "sender_type": "user",
+              "message": "Привет! Расскажи о ваших электромобилях",
+              "timestamp": "2026-03-12T10:29:05.254076"
+            },
+            {
+              "id": "49a53a7a-931f-4c26-ae99-c7c1741e2ac6",
+              "sender_type": "bot",
+              "message": "Мы продаём премиальные электромобили Hongqi в Казахстане — с официальным сервисом и поддержкой (в Алматы есть сервисная база), поэтому по эксплуатации и обслуживанию вы не остаётесь один на один с машиной.\n\nИз актуального и самого популярного у нас — **Hongqi E‑HS9**:\n- **Премиальный электрический SUV** с очень просторным салоном (комфортно и для семьи, и для поездок с водителем).\n- **Богатое оснащение**: много опций по комфорту и безопасности (в зависимости от комплектации).\n- **Экономичнее в содержании**, чем сопоставимые премиальные авто с ДВС: меньше затрат на «топливо» и меньше регламентных работ.\n\nЕсли вопрос “дорого” — это частое сравнение с обычными авто. В E‑HS9 вы платите не только за бренд и размеры, а за **уровень безопасности, премиальный комфорт, тишину/плавность хода и более низкие расходы на обслуживание**. Плюс можно подобрать **комплектацию** под ваш бюджет и задачи.\n\nЧтобы подсказать максимально точно (и по цене/комплектациям), скажите, пожалуйста:\n1) В каком вы городе?  \n2) Для чего авто: семья/город/трасса/представительские поездки?  \n3) Есть ли предпочтения по количеству мест и уровню опций?\n\nЕсли хотите, могу сразу **записать на тест‑драйв**: он доступен **по предварительной записи** — напишите удобный день/время и контактный номер.",
+              "timestamp": "2026-03-12T09:28:18.486938"
+            },
+            {
+              "id": "41d2b03f-a63d-46b4-ada6-3be4fa222fe7",
+              "sender_type": "user",
+              "message": "Привет! Расскажи о ваших электромобилях",
+              "timestamp": "2026-03-12T09:28:18.464324"
+            },
+            {
+              "id": "ecdf385a-888d-4cd4-b652-c2e126574fe2",
+              "sender_type": "bot",
+              "message": "Здравствуйте! Мы в Казахстане представляем премиальные электромобили **Hongqi** — это сочетание статуса, комфорта и современных технологий, плюс у нас есть **сервис и поддержка в Алматы**, чтобы эксплуатация была спокойной и предсказуемой.\n\n### Что есть из электромобилей\n**Hongqi E-HS9** — наш флагманский премиальный электрический **SUV**:  \n- **просторный салон** (удобно и для семьи, и для поездок с водителем)  \n- расширенный набор **опций комфорта и безопасности**  \n- тихий ход, динамика электромобиля и высокий уровень отделки\n\n### Почему электромобиль Hongqi — это выгодно в долгую\n- **экономия на “топливе”** (электричество дешевле бензина)  \n- **меньше затрат на обслуживание** (нет масла/свечей/многих расходников ДВС)  \n- высокий уровень **безопасности и комфорта**, который обычно ожидают от премиум-класса\n\n### Как лучше подобрать модель/комплектацию\nПодскажите, пожалуйста:  \n1) В каком городе вы находитесь (Алматы/Астана/другой)?  \n2) Для чего машина: семья, город, трасса, бизнес?  \n3) Важнее **запас хода**, **максимальный комфорт** или **цена**?\n\nЕсли хотите, могу сразу предложить подходящую **комплектацию E-HS9** и сориентировать по вариантам. Также можно записаться на **тест-драйв по предварительной записи** — скажите удобный день/время и контактный номер.",
+              "timestamp": "2026-03-12T09:09:17.691026"
+            },
+            {
+              "id": "e5242f1d-56de-4a76-b4d1-c63c5d2a202f",
+              "sender_type": "user",
+              "message": "Привет! Расскажи о ваших электромобилях",
+              "timestamp": "2026-03-12T09:09:17.542703"
+            }
+          ]
+        },
+        {
+          "conversation_id": "1bf27bb4-5c62-4e32-aecb-dda978e3fd74",
+          "user_id": 9001,
+          "channel": "whatsapp",
+          "status": "enabled",
+          "created_at": "2026-04-26T07:56:02.314259",
+          "updated_at": "2026-04-26T07:56:02.314259",
+          "messages": []
+        },
+        {
+          "conversation_id": "14aa88c8-3015-4da0-9d95-24bbdd8c7e7f",
+          "user_id": 9001,
+          "channel": "whatsapp",
+          "status": "enabled",
+          "created_at": "2026-03-13T02:30:13.822239",
+          "updated_at": "2026-03-13T02:30:13.822239",
+          "messages": []
+        },
+        {
+          "conversation_id": "7f4addff-8eb3-436d-8ee1-c0de37992615",
+          "user_id": 9001,
+          "channel": "whatsapp",
+          "status": "enabled",
+          "created_at": "2026-03-12T10:29:19.477811",
+          "updated_at": "2026-03-12T10:29:19.477811",
+          "messages": []
+        },
+        {
+          "conversation_id": "1ca9069c-6bd5-47a9-84e7-e7c7c38225e1",
+          "user_id": 9001,
+          "channel": "whatsapp",
+          "status": "enabled",
+          "created_at": "2026-03-12T09:28:32.243456",
+          "updated_at": "2026-03-12T09:28:32.243456",
+          "messages": []
+        },
+        {
+          "conversation_id": "05275725-76b4-4538-ac1e-def1571e57ce",
+          "user_id": 12345681,
+          "channel": "whatsap",
+          "status": "enabled",
+          "created_at": "2026-03-12T09:09:45.918898",
+          "updated_at": "2026-03-12T09:09:45.918898",
+          "messages": [
+            {
+              "id": "69ddc77d-543c-4c38-9aae-ee3b2bdcf19a",
+              "sender_type": "bot",
+              "message": "Hello! Welcome to Hongqi EVs in Kazakhstan.\n\nTo help you quickly, please tell me:\n1) Which city are you in (Almaty, Astana, etc.)?  \n2) Are you considering a **premium electric sedan** or **SUV**?  \n3) Your approximate budget range?\n\nWe can also arrange a **test-drive by appointment**. Our **service center + spare parts support are based in Almaty** (other cities possible by prior arrangement).",
+              "timestamp": "2026-03-13T02:30:27.919055"
+            },
+            {
+              "id": "06c2de2e-02cf-4a57-b904-723708633ad7",
+              "sender_type": "user",
+              "message": "Hello",
+              "timestamp": "2026-03-13T02:30:27.901920"
+            },
+            {
+              "id": "54a50429-5560-4660-ad11-767e60e4c8db",
+              "sender_type": "bot",
+              "message": "Hello! Welcome to Hongqi EVs in Kazakhstan.\n\nTo recommend the right Hongqi electric model and share current pricing/availability, could you tell me:\n1) Which city are you in (Almaty, Astana, etc.)?  \n2) Are you looking for a **premium sedan** or **SUV**?  \n3) What’s your approximate budget range?\n\nWe can also arrange a **test-drive by appointment**. Our **service + spare parts support is in Almaty** (other cities possible by prior arrangement).",
+              "timestamp": "2026-03-12T10:29:32.834550"
+            },
+            {
+              "id": "4c03a399-0436-4ced-9dbd-52b7a3f48457",
+              "sender_type": "user",
+              "message": "Hello",
+              "timestamp": "2026-03-12T10:29:32.823636"
+            },
+            {
+              "id": "c35c3f37-d131-49d7-8241-ec53b5483d12",
+              "sender_type": "bot",
+              "message": "Hello! Welcome to Hongqi EVs in Kazakhstan.\n\nTo guide you quickly: are you choosing a **premium electric sedan or SUV**, and which city are you in?  \nIf you’d like, we can also arrange a **test-drive by appointment** and share current **prices and available trims**. Our **service and spare parts support are based in Almaty** (other cities by prior arrangement).",
+              "timestamp": "2026-03-12T09:28:47.115301"
+            },
+            {
+              "id": "e4de5f6d-4f4d-4344-a4e3-c6adfba0e0d9",
+              "sender_type": "user",
+              "message": "Hello",
+              "timestamp": "2026-03-12T09:28:47.091766"
+            },
+            {
+              "id": "77bf871c-211a-4512-aa3a-5e10d9c36b33",
+              "sender_type": "bot",
+              "message": "Hello! Welcome to Hongqi EV Kazakhstan.\n\nTo help you quickly, what are you looking for:\n1) A specific Hongqi model (SUV or sedan)  \n2) Price & available trims in Kazakhstan  \n3) Range/charging details  \n4) Booking a test drive (by appointment)\n\nAlso, which city are you in? We have full service and spare parts support in Almaty (other cities—by prior arrangement).",
+              "timestamp": "2026-03-12T09:09:48.452056"
+            },
+            {
+              "id": "a09ca0ee-3341-4f55-a26e-79e14f84a9f6",
+              "sender_type": "user",
+              "message": "Hello",
+              "timestamp": "2026-03-12T09:09:48.360635"
+            }
+          ]
+        },
+        {
+          "conversation_id": "11614b79-1a0d-4f38-b074-4355f3f76e7a",
+          "user_id": 12345680,
+          "channel": "whatsap",
+          "status": "enabled",
+          "created_at": "2026-03-12T09:09:45.918061",
+          "updated_at": "2026-03-12T09:09:45.918061",
+          "messages": [
+            {
+              "id": "9c1d6e29-cfbb-409d-a277-527c50026d84",
+              "sender_type": "bot",
+              "message": "Hello! Welcome to Hongqi in Kazakhstan.\n\nI can help you choose the right premium Hongqi EV, compare trims/pricing, and arrange a test drive (by appointment). We also provide **service and spare parts support in Almaty** (other cities — by prior arrangement).\n\nTo recommend the best option, please tell me:\n1) Which city are you in?  \n2) Do you prefer an **SUV** or a **sedan**?  \n3) What’s your approximate budget range?",
+              "timestamp": "2026-03-13T02:30:27.535034"
+            },
+            {
+              "id": "4a139a13-73d4-4afa-a4ae-e2d87adca3bb",
+              "sender_type": "user",
+              "message": "Hello",
+              "timestamp": "2026-03-13T02:30:27.479615"
+            },
+            {
+              "id": "f07bfc3f-8b21-43a7-a761-f950d1ad194b",
+              "sender_type": "bot",
+              "message": "Hello! Welcome to Hongqi in Kazakhstan.\n\nI can help you pick the right premium Hongqi EV, compare trims and pricing, and book a test drive (by appointment). We also provide service and spare parts support in Almaty, and can support other cities by prior arrangement.\n\nTo recommend the best model, could you tell me:\n1) Which city are you in?  \n2) Do you prefer an SUV or a sedan?  \n3) What’s your approximate budget range?",
+              "timestamp": "2026-03-12T10:29:32.700745"
+            },
+            {
+              "id": "a8614e03-273b-4aad-a7bb-f96a48027556",
+              "sender_type": "user",
+              "message": "Hello",
+              "timestamp": "2026-03-12T10:29:32.696412"
+            },
+            {
+              "id": "9ab5b476-142e-44a9-a1d5-919abba42bb9",
+              "sender_type": "bot",
+              "message": "Hello! Welcome to Hongqi in Kazakhstan.\n\nI can help you choose a premium Hongqi EV, compare trims and pricing, and arrange a test drive (by appointment). We also provide service and spare parts support in Almaty, with support for other cities by prior arrangement.\n\nWhat are you looking for—an SUV or a sedan? And which city are you in?",
+              "timestamp": "2026-03-12T09:28:47.014377"
+            },
+            {
+              "id": "98568529-a2ee-4ff8-9fe4-4bca4640377a",
+              "sender_type": "user",
+              "message": "Hello",
+              "timestamp": "2026-03-12T09:28:46.994269"
+            },
+            {
+              "id": "2006b925-1d79-4bc3-ad8a-a620ea6858fc",
+              "sender_type": "bot",
+              "message": "Hello! Welcome to Hongqi EV Kazakhstan.\n\nTo help you quickly, what are you looking for?\n1) A premium electric SUV or a sedan  \n2) Price range (approx.)  \n3) City you’re in (Almaty/Astana/other)\n\nWe can also arrange a test drive by appointment, and we provide service + spare parts in Almaty with full customer support.",
+              "timestamp": "2026-03-12T09:09:48.846832"
+            },
+            {
+              "id": "28713ef1-45f3-4f34-aa1b-186700a2fd79",
+              "sender_type": "user",
+              "message": "Hello",
+              "timestamp": "2026-03-12T09:09:48.820686"
+            }
+          ]
+        },
+        {
+          "conversation_id": "eab56dad-ab93-4841-af50-6092b9993620",
+          "user_id": 12345679,
+          "channel": "whatsap",
+          "status": "enabled",
+          "created_at": "2026-03-12T09:09:45.861955",
+          "updated_at": "2026-03-12T09:09:45.861955",
+          "messages": [
+            {
+              "id": "a657e182-8bc8-4e67-9730-31e041222971",
+              "sender_type": "bot",
+              "message": "Hello! Welcome to Hongqi EVs in Kazakhstan.\n\nTo recommend the best Hongqi model and trim, please tell me:\n1) Your city  \n2) Sedan or SUV preference  \n3) Budget range (approx.)  \n4) Typical daily driving (km)\n\nWe can book a **test-drive by appointment**, and we provide **official service + spare parts in Almaty** (other cities available by prior arrangement).",
+              "timestamp": "2026-03-13T02:30:27.323861"
+            },
+            {
+              "id": "be0cb85e-2e2a-45eb-a9ef-5d4a63f2d96e",
+              "sender_type": "user",
+              "message": "Hello",
+              "timestamp": "2026-03-13T02:30:27.274409"
+            },
+            {
+              "id": "335b6dce-7619-4452-8940-e1bb237ea9ad",
+              "sender_type": "bot",
+              "message": "Hello! Welcome to Hongqi EVs in Kazakhstan.\n\nTo recommend the best Hongqi model and trim, could you share:\n1) Your city in Kazakhstan  \n2) Preferred body type: sedan or SUV  \n3) Your approximate budget range  \n4) Typical daily mileage (km)\n\nWe can also arrange a **test-drive by appointment**, and we provide **official service and spare parts in Almaty** (other cities—by prior arrangement).",
+              "timestamp": "2026-03-12T10:29:32.217984"
+            },
+            {
+              "id": "2f9dd336-853d-4272-8721-7323f873298d",
+              "sender_type": "user",
+              "message": "Hello",
+              "timestamp": "2026-03-12T10:29:32.165630"
+            },
+            {
+              "id": "efc56685-ea81-4003-80c5-ffd66bd694c9",
+              "sender_type": "bot",
+              "message": "Hello! Welcome to Hongqi EVs in Kazakhstan.\n\nWhat are you considering—an electric sedan or an SUV? If you tell me your city, budget range, and how far you typically drive per day, I’ll recommend the best Hongqi model and trim.  \nWe also offer **test-drives by appointment** and **official service + spare parts in Almaty** (other cities available by prior arrangement).",
+              "timestamp": "2026-03-12T09:28:46.441523"
+            },
+            {
+              "id": "e4eb36d7-e5ac-4240-b8ac-9e4726e68cdd",
+              "sender_type": "user",
+              "message": "Hello",
+              "timestamp": "2026-03-12T09:28:46.417544"
+            },
+            {
+              "id": "f3f5c27c-b16e-436f-9f68-db4bad9b5711",
+              "sender_type": "bot",
+              "message": "Hello! Welcome to Hongqi EV Kazakhstan.\n\nTo help you quickly, what are you choosing for:\n1) a premium family SUV,  \n2) a business sedan, or  \n3) a flagship luxury model?\n\nAlso, which city are you in? We have official service and spare parts support in **Almaty**, and we can arrange support for other cities by prior agreement.",
+              "timestamp": "2026-03-12T09:09:48.218797"
+            },
+            {
+              "id": "bcb6daf0-17e8-435f-abd5-f2fda8d9a944",
+              "sender_type": "user",
+              "message": "Hello",
+              "timestamp": "2026-03-12T09:09:48.122068"
+            }
+          ]
+        },
+        {
+          "conversation_id": "bd132dff-c539-4a35-add7-f7fdd9e8dc3f",
+          "user_id": 123456789,
+          "channel": "whatsapp",
+          "status": "enabled",
+          "created_at": "2026-03-12T09:09:37.709615",
+          "updated_at": "2026-03-12T09:09:37.709615",
+          "messages": [
+            {
+              "id": "9c9f06f0-bd9d-495f-97d6-a3aec28801b3",
+              "sender_type": "bot",
+              "message": "Мы не просто продаём Hongqi в Казахстане — мы сопровождаем клиента на всех этапах владения. Наши основные услуги:\n\n1) Консультация и подбор Hongqi (в т.ч. E‑HS9)  \n- Подберём модель и комплектацию под ваши задачи: семья/бизнес/город/трасса.  \n- Объясним по E‑HS9: опции, запас хода, зарядка, особенности эксплуатации в Казахстане.  \n- Сравним комплектации и подготовим коммерческое предложение.\n\n2) Тест-драйв по предварительной записи  \n- Организуем тест-драйв, чтобы вы оценили динамику, тишину хода и комфорт салона.  \nЧтобы оформить тест-драйв, напишите удобный день/время и контактный номер.\n\n3) Продажа и сопровождение покупки  \n- Полное сопровождение сделки: комплектация, договор, выдача авто, консультации по зарядке и настройкам.  \n- Поможем с дополнительными опциями/аксессуарами (по запросу).\n\n4) Сервис и поддержка в Алматы  \n- Есть сервисная база в Алматы, диагностика и регламентное обслуживание.  \n- Поддержка по гарантийным вопросам и консультации по эксплуатации.  \n- Запчасти и расходники — с локальным обеспечением (уточняем по конкретной позиции и VIN/комплектации).\n\nЕсли подскажете, пожалуйста, вы рассматриваете Hongqi E‑HS9 или другую модель? И в каком вы городе — Алматы/Астана/другой?",
+              "timestamp": "2026-03-13T02:30:24.299102"
+            },
+            {
+              "id": "3d6ed2c2-4bd7-4afe-8124-50932dfbfb88",
+              "sender_type": "user",
+              "message": "Расскажи про ваши услуги",
+              "timestamp": "2026-03-13T02:30:24.254515"
+            },
+            {
+              "id": "0a06a1e1-dc63-43c9-9f97-6224d6da5655",
+              "sender_type": "bot",
+              "message": "Мы не просто продаём Hongqi в Казахстане — мы сопровождаем клиента на всех этапах владения. Наши основные услуги:\n\n1) Консультация и подбор автомобиля Hongqi  \n- Поможем выбрать модель и комплектацию под ваши задачи (семья/бизнес/город/трасса).  \n- Подробно объясним по Hongqi E‑HS9: опции, комфорт, зарядка, запас хода и особенности эксплуатации в Казахстане.  \n- Сравним комплектации и подскажем оптимальный вариант по бюджету.\n\n2) Тест-драйв по предварительной записи  \n- Организуем тест-драйв в удобное время, чтобы вы оценили динамику, тишину хода и комфорт салона.  \nДля записи подскажите, пожалуйста: удобный день/время и контактный номер.\n\n3) Продажа и сопровождение сделки  \n- Подготовим коммерческое предложение, комплектацию, условия покупки.  \n- Сопроводим оформление документов и передачу автомобиля.\n\n4) Сервис и поддержка в Алматы  \n- У нас есть сервис и запчасти в Алматы, поэтому обслуживание и ремонт — без длительного ожидания.  \n- Консультации по эксплуатации и зарядной инфраструктуре.\n\nЕсли уточните, вы больше интересуетесь **покупкой E‑HS9**, **тест-драйвом** или **сервисом/обслуживанием** — я подскажу точнее под ваш запрос.",
+              "timestamp": "2026-03-12T10:29:28.852934"
+            },
+            {
+              "id": "493db09a-8fd4-4213-96f4-822d4b0fc74c",
+              "sender_type": "user",
+              "message": "Расскажи про ваши услуги",
+              "timestamp": "2026-03-12T10:29:28.830164"
+            },
+            {
+              "id": "f9474481-da50-4b3b-a33f-547f38623992",
+              "sender_type": "bot",
+              "message": "Мы не просто продаём Hongqi в Казахстане — мы сопровождаем клиента на всех этапах владения. Вот какие услуги у нас есть:\n\n1) Подбор и консультация по моделям Hongqi  \n- Поможем выбрать комплектацию под ваши задачи (семья/бизнес/город/трасса).  \n- Расскажем про опции, запас хода, зарядку, особенности эксплуатации в Казахстане.  \n- По Hongqi E‑HS9 отдельно можем подобрать конфигурацию под нужное количество мест и уровень оснащения.\n\n2) Тест-драйв по предварительной записи  \n- Можно записаться на удобное время и спокойно познакомиться с автомобилем вживую.  \nЧтобы оформить тест-драйв, напишите удобный день/время и ваш контактный номер.\n\n3) Продажа и сопровождение сделки  \n- Прозрачно проведём по всем шагам покупки: комплектация, наличие/сроки, документы.  \n- Консультируем по условиям эксплуатации электромобиля и зарядной инфраструктуре.\n\n4) Сервис и поддержка в Алматы  \n- У нас есть сервис и запчасти в Алматы — это ключевое преимущество для спокойного владения.  \n- Техобслуживание, диагностика, гарантийные вопросы, консультации по эксплуатации.\n\n5) Постпродажная поддержка  \n- Помогаем с вопросами по зарядке, настройкам автомобиля, обновлениям и ежедневной эксплуатации.\n\nСкажите, пожалуйста: вас больше интересует тест-драйв E‑HS9, сервис/обслуживание или помощь с выбором комплектации и ценой?",
+              "timestamp": "2026-03-12T09:28:42.516096"
+            },
+            {
+              "id": "783de24d-5c92-4811-891e-b78a92345a0f",
+              "sender_type": "user",
+              "message": "Расскажи про ваши услуги",
+              "timestamp": "2026-03-12T09:28:42.465557"
+            },
+            {
+              "id": "7824c26e-3849-4ecd-b92f-518ca4fbf543",
+              "sender_type": "bot",
+              "message": "Мы не просто продаём Hongqi в Казахстане — мы сопровождаем клиента на всём пути: от подбора модели до обслуживания после покупки. Что именно можем для вас сделать:\n\n1) Консультация и подбор электромобиля Hongqi  \n- Подберём модель и комплектацию под ваши задачи (семья/город/трасса, запас хода, опции, бюджет).  \n- Расскажем про особенности Hongqi, включая премиальные опции и комфорт (например, по E-HS9 — просторный салон и богатое оснащение).\n\n2) Тест-драйв по предварительной записи  \n- Организуем тест-драйв в удобное время.  \n- Перед поездкой объясним управление, режимы, зарядку и ключевые функции.  \nЧтобы записать: напишите удобный день/время и ваш контактный номер.\n\n3) Сопровождение сделки  \n- Поможем с оформлением, документами и ответим на вопросы по эксплуатации.  \n- Даем понятную консультацию по зарядке и ежедневному использованию.\n\n4) Сервис и поддержка в Алматы  \n- У нас есть сервисная база и запчасти в Алматы.  \n- Плановое обслуживание, диагностика, гарантийные/послегарантийные работы — с нормальным сроком и поддержкой клиента.\n\nЕсли уточните, что для вас сейчас актуальнее — выбор модели, тест-драйв или сервис — я подскажу максимально прицельно. В каком городе вы находитесь и какую модель рассматриваете (например, E-HS9)?",
+              "timestamp": "2026-03-12T09:09:45.000131"
+            },
+            {
+              "id": "665e1248-3b3d-42c5-b63e-50593b726590",
+              "sender_type": "user",
+              "message": "Расскажи про ваши услуги",
+              "timestamp": "2026-03-12T09:09:44.948371"
+            }
+          ]
+        },
+        {
+          "conversation_id": "649a003c-e171-4bb3-a5d0-7542bd4a5a7a",
+          "user_id": 223456789,
+          "channel": "telegram",
+          "status": "enabled",
+          "created_at": "2026-03-12T09:09:33.833924",
+          "updated_at": "2026-03-12T09:09:33.833924",
+          "messages": [
+            {
+              "id": "1fa940a3-a577-4f10-94e1-d5309e2e8eb9",
+              "sender_type": "bot",
+              "message": "Похоже, вы снова отправили тестовое сообщение.\n\nЧтобы перейти к подбору, ответьте, пожалуйста, кратко на 3 вопроса:\n1) Что хотите купить/подобрать (категория или конкретная модель)?\n2) Для каких задач и условий использования?\n3) Бюджет и город (доставка или самовывоз)?",
+              "timestamp": "2026-03-13T02:30:16.430245"
+            },
+            {
+              "id": "df713ae9-fff8-4d12-b8d4-84e90c0b494e",
+              "sender_type": "user",
+              "message": "Test message",
+              "timestamp": "2026-03-13T02:30:16.387479"
+            },
+            {
+              "id": "e4091c40-70f4-4b9a-b1c5-c980ca3418d1",
+              "sender_type": "bot",
+              "message": "Здравствуйте! Похоже, вы снова отправили тестовое сообщение.\n\nДавайте быстро перейдём к делу: что именно вы хотите купить или подобрать (товар/услуга)?  \nЧтобы предложить подходящие варианты, ответьте, пожалуйста, на 3 коротких вопроса:\n\n1) Что ищете (категория/название)?  \n2) Для каких задач/условий нужно?  \n3) Бюджет и город/доставка или самовывоз?\n\nНапишите любые детали — подберу варианты и помогу оформить заказ.",
+              "timestamp": "2026-03-12T10:29:22.713957"
+            },
+            {
+              "id": "6619663e-ef91-42c6-8782-76bd7f4eec68",
+              "sender_type": "user",
+              "message": "Test message",
+              "timestamp": "2026-03-12T10:29:22.668418"
+            },
+            {
+              "id": "e616e3be-d745-4a7b-8922-56c18613756a",
+              "sender_type": "bot",
+              "message": "Здравствуйте! Похоже, вы отправили тестовое сообщение.\n\nЧтобы я мог помочь как ассистент по продажам, уточните, пожалуйста:\n1) Что вы хотите купить/подобрать (товар или услуга)?\n2) Для каких задач и условий использования?\n3) Есть ли бюджет и сроки?\n4) Важные критерии: бренд, размеры, характеристики, доставка/самовывоз?\n\nНапишите пару деталей — предложу подходящие варианты и помогу с оформлением.",
+              "timestamp": "2026-03-12T09:28:35.097147"
+            },
+            {
+              "id": "77775bd1-b0a0-4f75-ae77-5191b8dd41e1",
+              "sender_type": "user",
+              "message": "Test message",
+              "timestamp": "2026-03-12T09:28:35.068014"
+            },
+            {
+              "id": "f1b8a7b8-35e0-4e82-baf2-ec7213de45e7",
+              "sender_type": "bot",
+              "message": "Принял. Подскажите, пожалуйста, что именно вы хотите подобрать или купить?\n\n1) Какая категория интересует (товар/услуга)?  \n2) Для каких задач и условий использования?  \n3) Бюджет и сроки (когда нужно)?  \n\nЕсли просто проверяете чат — напишите «тест», и я отвечу в том же формате.",
+              "timestamp": "2026-03-12T09:09:37.184648"
+            },
+            {
+              "id": "f051afc1-5d60-40e1-85e0-76efc131f409",
+              "sender_type": "user",
+              "message": "Test message",
+              "timestamp": "2026-03-12T09:09:37.110682"
+            }
+          ]
+        },
+        {
+          "conversation_id": "5c47d527-bc09-4ca4-980a-d863743d97d0",
+          "user_id": 9001,
+          "channel": "whatsapp",
+          "status": "enabled",
+          "created_at": "2026-03-12T09:09:33.698753",
+          "updated_at": "2026-03-12T09:09:33.698753",
+          "messages": []
+        },
+        {
+          "conversation_id": "dace8b16-cdca-43ba-b3d1-cbaed241e060",
+          "user_id": 434657687,
+          "channel": "telegram",
+          "status": "enabled",
+          "created_at": "2026-03-12T09:09:29.867064",
+          "updated_at": "2026-03-12T09:09:29.867064",
+          "messages": [
+            {
+              "id": "cc82cfdc-9138-4c07-bd40-95ca55f13dc0",
+              "sender_type": "bot",
+              "message": "Yep, we do.  \nDo you need regular lactose-free milk, or something like almond/oat instead?",
+              "timestamp": "2026-04-26T07:56:02.015533"
+            },
+            {
+              "id": "ca879d2e-43a2-4d80-bdb2-792dfd4f7ff8",
+              "sender_type": "user",
+              "message": "Do you have lactose-free milk?",
+              "timestamp": "2026-04-26T07:56:01.995880"
+            },
+            {
+              "id": "1a7d9b6b-8ef3-4252-b280-e467e32d592b",
+              "sender_type": "bot",
+              "message": "We don’t sell milk—our company specializes in premium Hongqi electric vehicles in Kazakhstan (sales + service/support).\n\nIf you meant “lactose‑free” as in “easier to live with / lower running costs,” an EV can help: you save on fuel and typically have lower routine maintenance. We also have service and spare parts in Almaty, plus consultation and test drives by appointment.\n\nIf you tell me your city (Almaty/Astana) and whether you want an SUV or sedan, I can suggest a Hongqi option—e.g., the Hongqi E‑HS9 premium electric SUV—and help book a test drive.",
+              "timestamp": "2026-03-13T02:30:13.424355"
+            },
+            {
+              "id": "fbc5598a-b067-46fd-a79e-27dd914356f8",
+              "sender_type": "user",
+              "message": "Do you have lactose-free milk?",
+              "timestamp": "2026-03-13T02:30:13.372468"
+            },
+            {
+              "id": "00f1637f-2a27-40ab-83f1-33db517bde78",
+              "sender_type": "bot",
+              "message": "We don’t sell milk—our company specializes in premium Hongqi electric vehicles in Kazakhstan.\n\nIf you meant “lactose‑free” as in “easier on the budget to run,” EVs can be a great fit: you save on fuel and typically spend less on routine maintenance vs. a gasoline SUV. We also have service and spare parts support in Almaty.\n\nAre you looking for an electric SUV? If yes, I can recommend the Hongqi E‑HS9 and arrange a test drive by appointment. Which city are you in (Almaty/Astana), and what budget range are you considering?",
+              "timestamp": "2026-03-12T10:29:19.023248"
+            },
+            {
+              "id": "33507a1c-c4a0-44ec-a038-f238efad3c65",
+              "sender_type": "user",
+              "message": "Do you have lactose-free milk?",
+              "timestamp": "2026-03-12T10:29:18.974094"
+            },
+            {
+              "id": "81a6e809-c613-4b69-8278-8e331843c28c",
+              "sender_type": "bot",
+              "message": "We specialize in premium Hongqi electric vehicles in Kazakhstan, so we don’t sell milk.\n\nIf you’re looking for something “lactose‑free” in the car sense—lower running costs—Hongqi EVs can help you save on fuel and typically require less routine maintenance than gasoline SUVs.\n\nIf you tell me what you’re considering (SUV/sedan, budget range, and city—Almaty/Astana), I’ll suggest the best Hongqi option and can book a test drive in Almaty.",
+              "timestamp": "2026-03-12T09:28:31.740778"
+            },
+            {
+              "id": "cc16f022-5a1e-40ff-b718-9aef0449fba7",
+              "sender_type": "user",
+              "message": "Do you have lactose-free milk?",
+              "timestamp": "2026-03-12T09:28:31.722200"
+            },
+            {
+              "id": "a3f5c4cb-0696-4b85-ab56-7f62d31c7850",
+              "sender_type": "bot",
+              "message": "We specialize in premium Hongqi electric vehicles in Kazakhstan, so we don’t sell dairy products like lactose-free milk.\n\nIf you meant something for the car (for example, “lactose-free” as a typo for “maintenance-free” or a specific feature), tell me what you’re looking for—and I’ll help.\n\nAre you interested in an electric SUV like the **Hongqi E‑HS9**? We can arrange a **test drive by appointment** and provide **service and spare parts in Almaty**.",
+              "timestamp": "2026-03-12T09:09:33.256564"
+            },
+            {
+              "id": "6c8c5d44-c689-4ef4-8016-3892bf9b3c9a",
+              "sender_type": "user",
+              "message": "Do you have lactose-free milk?",
+              "timestamp": "2026-03-12T09:09:33.202410"
+            }
+          ]
+        },
+        {
+          "conversation_id": "7b9ce9e8-434d-4bc6-b8cb-555b2a15c78a",
+          "user_id": 732939239,
+          "channel": "whatsapp",
+          "status": "enabled",
+          "created_at": "2026-03-12T09:09:22.302067",
+          "updated_at": "2026-03-12T09:09:22.302067",
+          "messages": [
+            {
+              "id": "d784cbe5-6bac-45d3-b053-71d6f486d2fb",
+              "sender_type": "bot",
+              "message": "Зависит от того, где заряжаете: дома или на станции.\n\nДома обычно выходит примерно **10–25 тг за 1 кВт⋅ч**, а на публичных зарядках чаще **60–120 тг за 1 кВт⋅ч** (по городу тарифы разные).  \nСкажите, вы в каком городе и чаще планируете заряжать **дома или на станциях**?",
+              "timestamp": "2026-04-26T07:55:59.417939"
+            },
+            {
+              "id": "ab39c579-4a00-4031-a988-0157c37e83c6",
+              "sender_type": "user",
+              "message": "Сколько стоит зарядка электромобиля?",
+              "timestamp": "2026-04-26T07:55:59.394847"
+            },
+            {
+              "id": "be2907ba-2727-4d70-85aa-4ca338351952",
+              "sender_type": "bot",
+              "message": "Стоимость зарядки электромобиля зависит от **тарифа на электроэнергию** и **расхода** (кВт⋅ч на 100 км).\n\n**Формула:**  \n**Цена за 100 км = расход (кВт⋅ч/100 км) × тариф (₸/кВт⋅ч)**\n\n### Ориентиры для Hongqi EV\nОбычно расход в смешанном цикле: **18–25 кВт⋅ч / 100 км**.\n\n### Пример (зарядка дома)\nЕсли тариф, например, **25 ₸/кВт⋅ч**, тогда:\n- **100 км** ≈ 18–25 × 25 = **450–625 ₸**\n- **полная зарядка батареи** (условно 80–100 кВт⋅ч) ≈ **2 000–2 500 ₸** при 25 ₸/кВт⋅ч (точнее зависит от ёмкости вашей модели)\n\n### Публичные станции / быстрая зарядка\nНа коммерческих станциях тариф обычно **выше домашнего**, поэтому стоимость за 100 км будет заметно больше — зависит от сети и локации.\n\nЕсли скажете, пожалуйста:\n1) **ваш город** (Алматы/Астана/другой),  \n2) заряжать планируете **дома или на станциях**,  \n3) **какую модель Hongqi** рассматриваете,  \nя посчитаю максимально точно под ваш сценарий.",
+              "timestamp": "2026-03-13T02:30:08.943180"
+            },
+            {
+              "id": "1089adc6-74c0-4cad-a8b3-7b8c60726c78",
+              "sender_type": "user",
+              "message": "Сколько стоит зарядка электромобиля?",
+              "timestamp": "2026-03-13T02:30:08.895504"
+            },
+            {
+              "id": "1fbd8b63-f121-4b42-9062-a51dff167622",
+              "sender_type": "bot",
+              "message": "Стоимость зарядки электромобиля считается просто:  \n**цена = (расход кВт⋅ч/100 км) × (тариф ₸/кВт⋅ч)**.\n\nДля премиальных электромобилей Hongqi ориентир по расходу обычно **18–25 кВт⋅ч на 100 км** (зависит от модели, стиля езды и сезона).\n\n### Пример (если заряжать дома)\nЕсли ваш тариф, например, **25 ₸/кВт⋅ч**, тогда:\n- **100 км ≈ 18–25 × 25 = 450–625 ₸**\n- **1000 км ≈ 4 500–6 250 ₸**\n\n### Если заряжать на публичных быстрых станциях\nТам тариф обычно **выше домашнего**, поэтому и стоимость за 100 км будет заметно больше — зависит от сети и локации.\n\nЧтобы посчитать точнее под ваш случай, подскажите, пожалуйста:\n1) ваш город (Алматы/Астана/другой),  \n2) планируете заряжать **дома** или **на станциях**,  \n3) какую модель Hongqi рассматриваете (или хотя бы тип — кроссовер/седан).",
+              "timestamp": "2026-03-12T10:29:14.746630"
+            },
+            {
+              "id": "be06c890-5800-44b4-a385-a2bfa6e9fce1",
+              "sender_type": "user",
+              "message": "Сколько стоит зарядка электромобиля?",
+              "timestamp": "2026-03-12T10:29:14.729990"
+            },
+            {
+              "id": "797800f2-1390-450d-836f-1768457b5821",
+              "sender_type": "bot",
+              "message": "Стоимость зарядки зависит от трёх вещей: расхода авто (кВт⋅ч на 100 км), тарифа на электричество и где заряжаете (дом/публичная станция).\n\n**Ориентир для Hongqi (и в целом для электромобилей):**\n- Средний расход: **18–25 кВт⋅ч / 100 км** (в городе/смешанном цикле).\n- Тогда цена **100 км пробега = 18–25 × ваш тариф (₸/кВт⋅ч)**.\n\n**Примеры:**\n- Если дома тариф условно **25 ₸/кВт⋅ч**, то **100 км** выйдут примерно **450–625 ₸**.  \n- На коммерческих быстрых станциях тариф обычно выше, поэтому **стоимость за 100 км** будет заметно больше (зависит от сети/локации).\n\nЕсли подскажете, пожалуйста:\n1) вы в каком городе (Алматы/Астана/другой),  \n2) планируете заряжать **дома или на станциях**,  \n3) какой Hongqi рассматриваете,  \n\n— я посчитаю вам более точную стоимость «под ваш сценарий».",
+              "timestamp": "2026-03-12T09:28:27.902817"
+            },
+            {
+              "id": "1b2ac088-130b-44fd-844f-5006e04180c4",
+              "sender_type": "user",
+              "message": "Сколько стоит зарядка электромобиля?",
+              "timestamp": "2026-03-12T09:28:27.839065"
+            },
+            {
+              "id": "fff29f24-599d-4ecc-b05c-29b22da37e4d",
+              "sender_type": "bot",
+              "message": "Стоимость зарядки зависит от трёх вещей: **ёмкости батареи (кВт·ч)**, **тарифа на электроэнергию** и **где заряжаете (дом/публичная станция)**.\n\n### 1) Зарядка дома (самый выгодный вариант)\nПример расчёта:  \n**Стоимость = ёмкость батареи × ваш тариф (₸/кВт·ч)**\n\nЕсли батарея, например, **80 кВт·ч**, а тариф условно **25–35 ₸/кВт·ч**, то полная зарядка выйдет примерно:  \n**80 × 25 = 2 000 ₸** до **80 × 35 = 2 800 ₸** (плюс небольшие потери на зарядке).\n\nПо времени: **8–10 часов от обычной розетки**.\n\n### 2) Публичные зарядные станции (обычно дороже)\nТут цена зависит от оператора и типа станции. **Быстрая зарядка** обычно стоит заметно дороже, и итог может быть как за кВт·ч, так и по времени — сильно зависит от конкретной станции.\n\n---\n\nЧтобы посчитать точнее, подскажите, пожалуйста:\n1) **В каком городе вы (Алматы/Астана/другой)?**  \n2) **Планируете заряжать дома или на станциях?**  \n3) Если знаете — **примерную ёмкость батареи** или модель Hongqi, которую рассматриваете.\n\nМогу сразу прикинуть **стоимость “на 100 км”** и сравнить с бензином для наглядности.",
+              "timestamp": "2026-03-12T09:09:29.060066"
+            },
+            {
+              "id": "82119462-7ea4-49f0-8d3f-e490702d5ae7",
+              "sender_type": "user",
+              "message": "Сколько стоит зарядка электромобиля?",
+              "timestamp": "2026-03-12T09:09:28.963312"
+            }
+          ]
+        },
+        {
+          "conversation_id": "699b19b0-7053-476b-8efd-bfeaa3588d8f",
+          "user_id": 993829378,
+          "channel": "web",
+          "status": "enabled",
+          "created_at": "2026-03-12T09:09:18.523701",
+          "updated_at": "2026-03-12T09:09:18.523701",
+          "messages": [
+            {
+              "id": "74bfc528-3785-4c4a-ae13-02f1d447097e",
+              "sender_type": "bot",
+              "message": "Hi! We actually don’t do coffee — we specialize in Hongqi electric cars (like the EQM5 from 25,000,000 ₸).\n\nWere you looking for coffee, or did you mean a car model/trim?",
+              "timestamp": "2026-04-26T07:55:56.107677"
+            },
+            {
+              "id": "67a146a7-8086-4706-9742-2f821db27e48",
+              "sender_type": "user",
+              "message": "Hello! What coffee do you offer?",
+              "timestamp": "2026-04-26T07:55:56.089465"
+            },
+            {
+              "id": "60ea04f4-5cff-4519-b390-9306b4ff5cb8",
+              "sender_type": "bot",
+              "message": "We don’t offer coffee—our showroom focuses on **premium Hongqi electric vehicles** in Kazakhstan.\n\nIf you tell me what you’re looking for, I can recommend the right Hongqi model and trim:\n1) **Sedan or SUV?**  \n2) Your **budget range**  \n3) Your typical daily mileage and whether you can **charge at home/work** (from a regular outlet, a full charge is usually **8–10 hours**; fast charging depends on the station)\n\nWe also provide **service and customer support in Almaty** (other cities by prior arrangement).",
+              "timestamp": "2026-03-13T02:30:02.606220"
+            },
+            {
+              "id": "bed5fbe4-677d-4837-9c36-63342ebc199b",
+              "sender_type": "user",
+              "message": "Hello! What coffee do you offer?",
+              "timestamp": "2026-03-13T02:30:02.561601"
+            },
+            {
+              "id": "dddb0e05-3036-432f-a77a-d120d271b837",
+              "sender_type": "bot",
+              "message": "We don’t offer coffee—our showroom specializes in **premium Hongqi electric vehicles** in Kazakhstan.\n\nIf you share what you’re considering, I’ll guide you to the best Hongqi option:\n1) **Sedan or SUV?**  \n2) Your **budget range** (approx.)  \n3) Typical daily driving and whether you can **charge at home/work** (full charge from a regular outlet is usually **8–10 hours**, fast charging depends on the station)\n\nWe also provide **service and customer support in Almaty** (other cities by prior arrangement).",
+              "timestamp": "2026-03-12T10:29:09.755693"
+            },
+            {
+              "id": "41449661-d233-4cd6-9d28-b491f3978d2a",
+              "sender_type": "user",
+              "message": "Hello! What coffee do you offer?",
+              "timestamp": "2026-03-12T10:29:09.707483"
+            },
+            {
+              "id": "a2d7445a-0fce-4671-9fde-41edce58ebbb",
+              "sender_type": "bot",
+              "message": "We don’t offer coffee—our showroom focuses on **premium Hongqi electric vehicles** in Kazakhstan.\n\nIf you tell me what you’re looking for (sedan vs SUV, budget range, expected range/charging needs), I’ll recommend the best **Hongqi EV** options and available trims. We also provide **service and customer support in Almaty** (other cities by prior arrangement).",
+              "timestamp": "2026-03-12T09:28:22.261976"
+            },
+            {
+              "id": "4091921a-f099-40e5-bee8-f9bc326338e6",
+              "sender_type": "user",
+              "message": "Hello! What coffee do you offer?",
+              "timestamp": "2026-03-12T09:28:22.239752"
+            },
+            {
+              "id": "2beecf27-e8bf-4dd5-bc2b-138de8ffd5ad",
+              "sender_type": "bot",
+              "message": "We specialize in premium Hongqi electric vehicles in Kazakhstan, so we don’t offer coffee as a product.\n\nIf you meant “what Hongqi models do you offer?”, tell me:\n1) your city in Kazakhstan,  \n2) your budget range, and  \n3) whether you prefer an SUV or a sedan.\n\nI’ll recommend the best Hongqi EV options and also explain charging (8–10 hours from a regular outlet; fast charging depends on the station) and our service support in Almaty.",
+              "timestamp": "2026-03-12T09:09:21.869959"
+            },
+            {
+              "id": "b64096f6-d256-49c1-995f-7c0a1be27168",
+              "sender_type": "user",
+              "message": "Hello! What coffee do you offer?",
+              "timestamp": "2026-03-12T09:09:21.853114"
+            }
+          ]
+        }
+      ],
+      "count": 14
+    }
+  },
+  "edge_cases": {
+    "status": "completed",
+    "acceptable": 3,
+    "total": 3,
+    "results": [
+      {
+        "case": "empty message (→400)",
+        "status": "rejected",
+        "code": 400
+      },
+      {
+        "case": "non-existent brief_id=999",
+        "status": "handled",
+        "code": 200
+      },
+      {
+        "case": "very long message (5000 chars)",
+        "status": "rejected",
+        "code": 400
+      }
+    ]
+  },
+  "service_integration": {
+    "status": "passed",
+    "time": 4.35,
+    "response_len": 502
+  },
+  "performance": {
+    "status": "passed",
+    "success_rate": 100.0,
+    "avg_time": 2.59,
+    "max_time": 2.86,
+    "min_time": 2.37
+  },
+  "summary": {
+    "core_score": 6.0,
+    "core_total": 7,
+    "edge_acceptable": 3,
+    "edge_total": 3,
+    "get_all_conversations": "passed",
+    "performance_passed": 1,
+    "overall_score": 8.0,
+    "overall_max": 9,
+    "success_rate": 88.89
+  }
+}
